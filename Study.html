@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+   <script>
+    function a() {
+        var localA = 1;
+        var localB = 2;
+        var localC = 3;
+        return {
+            get a() {return localA;},
+            set a(v) { localA = v;},
+            get b() {return localB + localC;},
+            set b(v) { throw Error('read only');}
+              
+        }
+         
+    }
+    
+    var obj = a();
+       
+console.log(obj.a);
+
+    
+    
+    </script>
+</html>
