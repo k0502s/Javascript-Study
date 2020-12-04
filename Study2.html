@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<script>
+    function Person(n,a){
+        
+    this.name = n;
+    this.age = a;
+    }
+    Person.prototype.setold =function(){
+        this.age += 1;
+    }
+     Person.prototype.setage = function(){
+        return this.age;
+     }
+    
+    var jin = new Person('jinseok', 25);
+    var jin2 = new Person('kim', 30);
+    
+    console.log(jin.__proto__.setold());
+    console.log(jin.__proto__.setage());
+    
+    console.log(jin.setold());
+    console.log(jin.setage());
+    
+</script>
+
+
+
+</html>
