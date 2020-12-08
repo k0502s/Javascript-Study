@@ -1,0 +1,145 @@
+<script>
+console.log(`a
+bb
+ccc`)
+```
+
+```js
+const a = 10
+const b = 20
+const str = `${a} + ${b} = ${ a + b }`
+console.log(str)
+const f = function () {
+  const a = `abc
+  def
+  ghij`
+  console.log(a)
+}
+f()
+
+
+const counter = {
+  current: 0,
+  step: 1,
+  count: function() { return this.current += this.step },
+  reset: function() { return this.current = 0 }
+}
+console.log(`${counter.count()} ${counter.count()}
+${counter.reset()} $${counter.count()}
+${counter.count()}$`)
+```
+
+console.log(`${[0, 1, 2]}`)
+console.log(`${{a:1, b:2}}`)
+console.log(`${function(){ return 1 }}`)
+console.log(`${(() => 1 )()}` + 1)
+
+
+
+
+```js
+console.log(`Foo ${`Bar`}`)
+console.log(`Foo ${`Bar ${`Baz`}`}`)
+```
+
+
+
+```js
+function a () {
+  return `
+<div>
+    <h1>Lorem ipsum.</h1>
+</div>
+  `.trim()
+}
+console.log(a())
+console.log(a().replace(/\n/g, ''))
+```
+
+```js
+const linesToHTML = function (characters) {
+  return characters.reduce(function (charactersResult, character) {
+    let {name, lines} = character
+    return `${charactersResult || ''}
+<article>
+  <h1>${name}</h1>
+  <ul>
+    ${lines.reduce(function (linesResult, line) {
+      return `${linesResult || ''}
+    <li>${line}</li>
+      `.trim()}, 0)}
+  </ul>
+</article>
+  `.trim()}, 0)
+}
+const characters = [{
+  name: 'Aria Stark',
+  lines: ['A girl has no name.']
+}, {
+  name: 'John Snow',
+  lines: [
+    'You know nothing, John Snow.',
+    'Winter is coming.'
+  ]
+}]
+document.body.innerHTML = linesToHTML(characters)
+```
+
+
+
+```js
+const a = [ 1, 2, 3 ]
+a.forEach(function (v, i, arr) {
+    console.log(v, i, arr, this)
+}, [ 10, 11, 12 ])
+```
+
+
+```js
+const a = [ 1, 2, 3 ]
+const b = a.map(function (v, i, arr) {
+    console.log(v, i, arr, this)
+    return this[0] + v
+}, [ 10 ])
+```
+
+
+```js
+const arr = [ 1, 2, 3 ]
+const res = arr.reduce(function (p, c, i, arr) {
+  console.log(p, c, i, arr, this)
+  return p + c
+}, 10)
+```
+
+```js
+const arr = [ 1, 2, 3, 4 ]
+const str = arr.reduce(function (res, item, index, array) {
+  return res + item
+}, '')
+console.log(str)
+```
+
+
+```js
+const arr = [ 'a', 'b', 'c', 'd' ]
+const str = arr.reduce(function (res, item, index, array) {
+  return res + item
+})
+console.log(str)
+```
+
+
+```js
+const arr = [ 10, 20, 30, 40, 50 ]
+const r = arr.reduce(function (p, c) {
+  return p + c
+})
+console.log(r)
+```
+
+```js
+const arr = [ 10, 20, 30, 40, 50 ]
+const r = arr.reduce((p, c) => p + c)
+console.log(r)
+</script>
