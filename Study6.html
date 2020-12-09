@@ -1,0 +1,47 @@
+<script>
+
+const f = function (x, y, ...rest) {
+  console.log(rest)
+}
+f(1, 2, true, null, undefined, 10)
+
+</script>
+
+
+
+
+<script>
+
+let person = {
+  name: 'name',
+  age : 30,
+  get personInfo(){
+    return this.name + ' ' + this.age
+  },
+  set personInfo (...val) {
+    this.name = val[0]
+    this.age  = val[1]
+  }
+}
+console.log(person.personInfo)
+
+</script>
+
+
+
+<script>
+
+
+const f = function (_first, ...rest, _last) {
+  console.log(_first, _last)
+}
+f(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+```
+
+
+</script>
+         
+         
+         
+         
+         
