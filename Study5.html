@@ -1,0 +1,103 @@
+<script>
+    
+const f = function (x, y, z) {
+  x = x !== undefined ? x : 3
+  y = typeof x !== "undefined" ? y : 4
+  console.log(x, y)
+}
+f(0, null)
+    
+</script>
+
+
+
+<script>
+    
+    
+const f = function (a = 1, b = 2, c = 3, d = 4, e = 5, f = 6) {
+  console.log(a, b, c, d, e, f)
+}
+f(7, 0, "", false, null)
+
+
+
+</script>
+
+
+
+<script>
+
+const f = function (x = 1, y = 3 + x) {
+  console.log(x, y)
+}
+f()
+
+</script>
+
+
+
+
+<script>
+
+
+const getDefault = function () {
+  console.log('getDefault Called.')
+  return 10
+}
+const sum = function (x, y = getDefault()) {
+  console.log(x + y)
+}
+sum(1, 2)
+sum(1)
+
+</script>
+
+
+<script>
+
+
+
+const f = function (x = 1, y = 2 + x) {
+  let z = y + 3
+  x = 4
+  console.log(x, y, z)
+}
+f()
+
+
+
+</script>
+
+
+
+
+<script>
+
+
+const f =function(a = 1, b = c+1, c = 3){
+let _a;
+let _b = _c +1;
+    let _c;
+    console.log(a,b,c);
+}
+
+f(1, undefined, 3)
+    
+</script>
+
+
+
+<script>
+
+let a = 10
+let b = 20
+function f (aa = a, b = b) {
+  console.log(aa, b)
+}
+f(1, 2)
+f(undefined, 2)
+f(1)
+f()
+
+</script>
+
