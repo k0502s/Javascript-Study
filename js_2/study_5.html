@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            //문자열 뒤집기
+            let result = '';
+            let x = 'kimjinseok';
+            while (true) {
+                if (x.length == 1) {
+                    result += x;
+                    break;
+                }
+                //pop을 이용하여 마지막 문자를 꺼낸다.
+                let y = x.split('');
+                result += String(y.pop());
+                x = y.join('');
+            }
+            console.log(result); //koesnijmik
+            //출력을 거꾸로 표시하기 위하여
+            // console.log(result.split('').reverse().join(''));
+
+            //재귀함수 사용
+            function 문자열역순(문자) {
+                //반복된 재귀함수의 인수에 들어간 문자의 길이가 1개가 되면 1개 남은 문자 리턴 및 정지.
+                if (문자.length == 1) {
+                    return 문자;
+                } //마지막 문자 추출  + 0부터 마지막 문자 전까지 자른다. 그리고 재귀함수로 실행
+                // 'k'             + 문자열역순('kimjinseo') => 'oesnijmik' => 이게 결과다.
+                // 'o'            + 문자열역순('kimjinse')  => 'einijmik'
+                return 문자[문자.length - 1] + 문자열역순(문자.slice(0, 문자.length - 1));
+            }
+            console.log(문자열역순('kimjinseok'));
+        </script>
+    </body>
+</html>

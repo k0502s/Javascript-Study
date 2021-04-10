@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //재귀함수
+        //내가 나를 호출하는 함수
+        //반복문 <-> 재귀함수
+
+        //1~100까지 합
+        let s = 0
+        for(var i = 1; i<101; i++) {
+            s += i;
+        }
+        console.log(s); //5050
+
+        let n = 100;
+        console.log(n*(n+1)/2); //5050
+
+        //1~5까지 곱
+        let m = 0
+        for(var i = 1; i<6; i++) {
+            m *= i;
+        }
+        console.log(m); // 120
+
+        //재귀함수로 1~100까지 합
+        function f(n) {
+            //아래와 같이 종료 조건이 있어야 무한반복 안됨
+            if (n <= 1) {
+                return 1
+            }
+            return n + f(n-1)
+        }
+        console.log(f(100)) //5050
+
+        //재귀함수로 1~5까지 곱
+        function f(n) {
+            //아래와 같이 종료 조건이 있어야 무한반복 안됨
+            if (n <= 1) {
+                return 1
+            }
+            return n * f(n-1)
+        }
+        console.log(f(5)) //120
+
+        // f(5) 5 5*f(4) 5*24
+        // f(4) 4 4*f(3) 4*6
+        // f(3) 3 5*f(2) 3*2
+        // f(2) 2 5*f(1) 2*1
+        // f(1) 1 1      
+        
+        
+    </script>
+</body>
+</html>
