@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // 최솟값과 최댓값
+            let a = [10, 20, 30, 1, 2, 3, 5, 9, 11];
+
+            a.sort(); //a 배열을 숫자 크기순으로 정렬함
+            console.log(a[0]); //최솟값 1
+            console.log(a[a.length - 1]);
+
+            console.log(Math.max.apply(null, a)); //최댓값 추출
+            console.log(Math.min.apply(null, a)); //최솟값 추출
+
+            let m = 0;
+            for (var variable of a) {
+                if(variable > m) {
+                    m = variable
+                     //0인 m보다 큰 값을 계속 찾으며 돌리다가 결국
+                    //제일 큰 최대값을 리턴한다.
+                }
+            }
+            console.log(m); // 최댓값
+            
+            let m = 999;
+            for (var variable of a) {
+                if(variable < m) {
+                    m = variable 
+                      //반대로 999인 m보다 작은 값을 계속 찾으며 돌리다가 결국
+                    //제일 작은 최솟값을 리턴한다.
+                }
+            }
+            console.log(m); // 최솟값
+
+            let m = a[0]; 
+            //배열 원소 하나만 가지고도 최대값 최솟값 구하기 가능
+            //결국은 배열 원소 기준으로 제일 큰거 제일 작은거를 도출해낸다.
+            for (var variable of a) {
+                if(variable > m) {
+                    m = variable
+                }
+            }
+            console.log(m); // 최댓값
+
+            let m = a[0];
+            for (var variable of a) {
+                if(variable < m) {
+                    m = variable
+                }
+            }
+            console.log(m); // 최솟값
+
+                ///////////////////////////////////////
+
+            let b = [6, 5, 4, 3, 2]
+    const reducerOne = (accumulator, currentvalue) => accumulator+currentvalue;
+    const reducerTwo = (accumulator, currentvalue) => accumulator-currentvalue;
+    
+    //계속 비교를 하며 큰 수를 accumulator을 넣어 결국 제일 큰 수를 도출
+    const reducerThree = (accumulator, currentvalue) => accumulator>currentvalue
+    ? accumulator : currentvalue;
+
+    //계속 비교를 하며 작은 수를 accumulator을 넣어 결국 제일 작은 수를 도출
+    const reducerFour = (accumulator, currentvalue) => accumulator<currentvalue
+    ? accumulator : currentvalue;
+
+    //리듀서는 배열의 각 요소에 대해 주어진 함수를 실행하고 하나의 결과 값을 반환한다.
+    console.log(a.reduce(reducerOne));// 20
+    console.log(a.reduce(reducerTwo)); //-8
+    console.log(a.reduce(reducerThree)); //최댓값
+    console.log(a.reduce(reducerFour)); //최솟값
+
+
+
+        </script>
+    </body>
+</html>
