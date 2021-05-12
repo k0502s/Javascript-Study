@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // 동물 자리 양보 조건 문제 (페이지 교체 알고리즘)
+
+            let 동물 = ['척추동물', '어류', '척추동물', '무척추동물', '파충류', '척추동물', '어류', '파충류'];
+
+            function solution(동물, 자리) {
+                let 의자 = [];
+                let answer = 0;
+                for (var 개별동물 of 동물) {
+                    if (의자.length < 3) {
+                        if(의자.includes(개별동물)){
+                            //1. hit 됐을때는 배열에서 뒤로 빼준다.
+                            의자.splice(의자.indexOf(개별동물), 1)
+                            의자.push(개별동물)
+                            answer += 1;
+                        }else {
+                            의자.push(개별동물);
+                            answer += 60;
+                        }
+                    }else {
+                        if(의자.includes(개별동물)){
+                            의자.splice(의자.indexOf(개별동물), 1)
+                            의자.push(개별동물)
+                            answer += 1;
+                        }else {
+                            //2. shift는 0번째인 앞에만 자르기 때문에
+                            //뒤로 빼준 hit 된 동물은 잘리지 않는다.
+                            의자.shift()
+                            의자.push(개별동물);
+                            answer += 60;
+                        }
+                    }
+                    console.log(의자);
+                }
+                return `${parseInt(answer/60, 10)} 분, ${answer%60} 초`;
+            }
+
+            console.log(solution(동물, 3));
+        </script>
+    </body>
+</html>
