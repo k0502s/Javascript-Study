@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            //11. 1부터 100까지 모두 더하는 Code를 <pass> 부분
+            let s = 0;
+
+            //pass
+            for (let a = 1; a < 101; a++) {
+                s += a;
+            }
+            console.log(s);
+
+            //12. 다음 소스코드에서 클래스를 작성하여 게임 캐릭터의 능력치와 '파이어볼'이 출력되게 만드시오.
+            //데이터
+            class Wizard {
+                constructor(health, mana, armor) {
+                    (this.health = health), (this.mana = mana), (this.armor = armor);
+                }
+                health() {
+                    return this.health;
+                }
+                mana() {
+                    return this.mana;
+                }
+                armor() {
+                    return this.armor;
+                }
+                attack() {
+                    console.log('파이어볼');
+                }
+            }
+
+            const x = new Wizard(545, 210, 10);
+            console.log(x.health, x.mana, x.armor);
+            x.attack();
+
+            //출력
+            //545 210 10
+            // 파이어볼
+
+            //13. 우리 태양계를 이루고 있는 행성은 수성, 금성, 지구, 화성, 목성, 토성, 천왕성, 해왕성으로 총 8개 입니다.
+            //저희는 우리 태양계의 n번째 행성이 무엇인지 알고 싶습니다.
+            //입력으로 행성의 순서를 나타내는 숫자 n이 입력됩니다.
+            //출력으로 그 순서에 해당하는 행성의 이름을 출력해 주세요.
+            //예를들어 1이 입력되면, 첫번째 행성인 수성이 출력됩니다.
+
+            //입력: 1
+            //출력: 수성
+
+            const planets = ['수성', '금성', '지구', '화성', '목성', '토성', '천왕성', '해왕성'];
+            const P = (n) => {
+                for (let s in planets) {
+                    if (s == n - 1) {
+                        return planets[s];
+                    }
+                }
+            };
+            console.log(P(2));
+
+            //14. 영희는 친구와 게임을 하고 있습니다. 서로 돌아가며 랜덤으로 숫자를 하나 말하고
+            //그게 3의 배수이면 박수를 치고 아니면 그 숫자를 그대로 말하는 게임입니다.
+            //입력으로 랜덤한 숫자 n이 주어집니다.
+            //만약 그 수가 3의 배수라면 '짝'이라는 글자를, 3의 배수가 아니라면 n을 그대로 출력해 주세요.
+
+            //입력: 3;
+            //출력: 짝;
+
+            //입력: 2;
+            //출력: 2;
+            const N = (n) => {
+                if (n % 3 == 0) {
+                    console.log('짝');
+                } else {
+                    return n;
+                }
+            };
+            console.log(N(5));
+
+            //15. 입력으로 김다정이라는 이름이 주어지면
+            // "안녕하세요. 저는 김다정입니다."라고 출력하게 해주세요.
+
+            //입력 : 김다정
+            //출력 : 안녕하세요. 저는 김다정입니다.
+
+            const Name = (name) => {
+             console.log(`안녕하세요. 저는 ${name}입니다.`)
+            }
+            console.log(Name('김다정'))
+        </script>
+    </body>
+</html>
