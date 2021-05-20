@@ -42,8 +42,8 @@
                         for (var v of 차집합) {
                             stack.push(v);
                         }
-                        // console.log(`방문: ${방문}`);
-                        // console.log(`stack: ${stack}`);
+                        console.log(`방문: ${방문}`);
+                        console.log(`stack: ${stack}`);
                     }
                     if (stack.length == 0) {
                         break;
@@ -62,12 +62,12 @@
                     if (!방문.includes(n)) {
                         방문.push(n);
                         let 차집합 = new Set([...graph[n]].filter((x) => !new Set(방문).has(x)));
-                        
-                        if([...차집합].length == 0){
-                            break
+
+                        if ([...차집합].length == 0) {
+                            break;
                         }
-                        stack.push(Math.max(...차집합))
-                    
+                        stack.push(Math.max(...차집합));
+
                         // console.log(`방문: ${방문}`);
                         // console.log(`stack: ${stack}`);
                     }
@@ -87,12 +87,12 @@
                     if (!방문.includes(n)) {
                         방문.push(n);
                         let 차집합 = new Set([...graph[n]].filter((x) => !new Set(방문).has(x)));
-                        
-                        if([...차집합].length == 0){
-                            break
+
+                        if ([...차집합].length == 0) {
+                            break;
                         }
-                        stack.push(Math.min(...차집합))
-                    
+                        stack.push(Math.min(...차집합));
+
                         // console.log(`방문: ${방문}`);
                         // console.log(`stack: ${stack}`);
                     }
@@ -102,25 +102,25 @@
                 }
                 return 방문;
             }
-            // console.log(깊이우선탐색(graph, 100));
+            console.log(깊이우선탐색(graph, 100));
             // console.log(깊이우선탐색최댓값(graph, 100));
             // console.log(깊이우선탐색최솟값(graph, 100));
 
             결과값_깊이우선탐색최댓값 = 깊이우선탐색최댓값(graph, 100);
             console.log(결과값_깊이우선탐색최댓값);
             let result = '';
-            for(var v of 결과값_깊이우선탐색최댓값) {
+            for (var v of 결과값_깊이우선탐색최댓값) {
                 result += String.fromCharCode(v);
             }
-            console.log(result)
+            console.log(result);
 
             결과값_깊이우선탐색최솟값 = 깊이우선탐색최솟값(graph, 100);
             console.log(결과값_깊이우선탐색최솟값);
             let result2 = '';
-            for(var v of 결과값_깊이우선탐색최솟값) {
+            for (var v of 결과값_깊이우선탐색최솟값) {
                 result2 += String.fromCharCode(v);
             }
-            console.log(result2)
+            console.log(result2);
         </script>
     </body>
 </html>
