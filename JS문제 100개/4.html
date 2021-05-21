@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            //16. 문장이 입력되면 거꾸로 출력하는 프로그램을 만들어 봅시다.
+            //입력 : 거꾸로
+            //출력 : 로꾸거
+
+            const Reverse = (s) => {
+                return s.split('').reverse().join('');
+            };
+            console.log(Reverse('거꾸러'));
+
+            //17. 입력으로 키가 주어지면 키가 150이 넘으면 YES를
+            //틀리면 NO를 출력하는 프로그램을 작성하세요.
+
+            const 키재기 = (n) => {
+                if (n > 150) {
+                    console.log('YES');
+                } else {
+                    console.log('NO');
+                }
+            };
+            console.log(키재기(140));
+
+            //18. 공백으로 구분하여 세 과목의 점수가 주어지면 전체 평균 점수를
+            //구하는 프로그램을 작성하세요.
+            //단, 소숫점 자리는 모두 버립니다.
+
+            //입력 : 20 30 40
+            //출력 : 30
+
+            const 평균구하기 = (a, b, c) => {
+                const result = Math.floor((a + b + c) / 3);
+                return result;
+            };
+            console.log(평균구하기(20, 30, 40));
+
+            //19. 공백으로 구분하여 두 숫자 a와 b가 주어지면, a의 b승을 구하는
+            //프로그램을 작성하세요.
+            const 제곱구하기 = (a, b) => {
+                return Math.pow(a, b);
+            };
+            console.log(제곱구하기(2, 4));
+
+            //20. 두번째 숫자로 첫번째 숫자를 나누었을 때 그 몫과 나머지를
+            //공백으로 구분하여 출력하세요.
+
+            // 입력 : 10 2
+            // 출력 : 5 0
+
+            const 몫나머지 = (a, b) => {
+                const 몫 = Math.floor(a / b);
+                const 나머지 = a % b;
+                console.log(몫, 나머지);
+            };
+
+            console.log(몫나머지(10, 2));
+        </script>
+    </body>
+</html>
