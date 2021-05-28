@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            //36. 1~9까지의 숫자 중 하나를 입력하면 그 단의 구구단 결과를
+            //한 줄에 출력하는 프로그램을 작성하세요.
+
+            // 입력 : 2
+            // 출력 : 2 4 6 8 10 12 14 16 18
+
+            // const 구구단 = prompt('한 자리 숫자 입력');
+            // let 답 = '';
+            // for (let i = 1; i < 10; i++) {
+            //     답 += parseInt(구구단, 10) * i + ' 2';
+            // }
+            // console.log(답);
+
+            //37. 학생들이 뽑은 후보들을 입력받으면 뽑힌 학생의 이름과 받은
+            //표 수를 출력하는 프로그램을 작성하기로 하였습니다.
+
+            // 입력
+            // 원범 원범 혜원 혜원 혜원 혜원 유진 유진
+
+            // 출력
+            // 혜원(이)가 총 4표로 반장이 되었습니다.
+
+            // const 반장 = prompt('반장 입력').split(' ');;
+            // let result = {};
+            // let winner = '';
+            // for (let i in 반장) {
+            //     let n = 반장[i];
+            //     result[n] = result[n] === undefined ? 1 : (result[n] = result[n] + 1);
+            // }
+            // winner = Object.keys(result).reduce(function (a, b) {
+            //     return result[a] > result[b] ? a : b;
+            // });
+            // console.log(`${winner}(이)가 총 ${result[winner]}표로 반장이 되었습니다.`);
+
+            //38. 1위 ~ 3위 학생은 여러명일 수 있고 1~3위 학생 중 중복되는 학생까지 포함하여
+            // 사탕을 사기로 한다. 학생들의 점수를 공백으로 구분하여 입력을 받고 사탕을
+            //받을 학생의 수를 출력하세요.
+
+            // 입력 : 97 86 75 66 55 97 85 97 97 95
+            // 출력 : 6
+
+            // const 점수 = prompt('점수 데이터 입력').split(' ');
+            // let count = 0;
+            // let arr = [];
+            // 점수.sort(function (a, b) {
+            //     return a - b;
+            // });
+            // console.log(점수);
+            // while (arr.length < 3) {
+            //     let n = 점수.pop();
+            //     if (!arr.includes(n)) {
+            //         arr.push(n);
+            //     }
+            //     count += 1;
+            // }
+            // console.log(count);
+
+            // 39. 문장이 입력되면 모든 q를 e로 바꾸는 프로그램을 작성해 주세요.
+            // 입력 : querty
+            // 출력 : euerty
+
+            // const 문장 = prompt('문장 입력').split('q').join('e');
+            // console.log(문장);
+
+            //40. 테마파크에 온 원범이와 친구들은 놀이기구를 타려고 합니다.
+            // 모든 놀이기구는 한번에 타는 인원수에는 제한이 없지만 제한 무게를 넘으면
+            // 무조건 다음 기구를 타야 합니다. 원범이와 친구들이 총 몇 명 탈 수 있는지
+            // 알 수 있는 프로그램을 작성해 주세요.
+
+            // 첫번째 입력으로 제한 무게가 주어지고 두번째 입력으로는 함께한 친구
+            // 들의 수 n이 주어집니다. 그 다음 차례대로 탑승할 친구들의 몸무게가 주어집니
+            // 다. 몸무게는 무작위로 주어집니다.
+
+            // 입력
+            // 50
+            // 5
+            // 20
+            // 20
+            // 20
+            // 20
+            // 20
+
+            // 출력
+            // 2
+            const 무게 = prompt('놀이기구 제한 무게 입력');
+            const 인원 = prompt('인원 입력');
+
+            const 개인무게 = prompt('개인 무게 입력');
+            let 허용인원 = 0;
+            let 총무게 = 0;
+            for (let i = 1; i <= 인원; i++) {
+                총무게 += parseInt(prompt('무게를 입력해주세요.'), 10);
+                if (총무게 <= 무게) {
+                    허용인원 = i;
+                }
+            }
+
+            console.log(허용인원);
+        </script>
+    </body>
+</html>
