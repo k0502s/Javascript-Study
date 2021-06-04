@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            //56.다음의 객체가 주어졌을 때 한국의 면적과 가장 비슷한 국가와 그 차이를 출력하세요.
+            // 데이터
+            // nationWidth = {
+            //      'korea': 220877,
+            //      'Rusia': 17098242,
+            //      'China': 9596961,
+            //      'France': 543965,
+            //      'Japan': 377915,
+            //      'England' : 242900,
+            // }
+
+            // 출력
+            // England 22023
+
+            // const nationWidth = {
+            //     korea: 220877,
+            //     Rusia: 17098242,
+            //     China: 9596961,
+            //     France: 543965,
+            //     Japan: 377915,
+            //     England: 242900,
+            // };
+            // let 면적차 = [];
+            // for (let i in nationWidth) {
+            //     if(nationWidth.korea != nationWidth[i]){
+            //     면적차.push(nationWidth[i] - nationWidth.korea);
+            //     }
+            // }
+            // 면적차.sort((a, b) => {
+            //     return a - b;
+            // });
+            // for(let i in nationWidth){
+            //     if(nationWidth[i] - nationWidth.korea == 면적차[0]){
+            //         console.log(i, 면적차[0]);
+            //     }
+            // }
+
+            //57. 0부터 1000까지의 수에서 1은 몇 번이나 들어갔을까요? 출력해 주세요.
+            // let n = ''
+            // let count = 0
+            // for(let i = 0; i<=1000; i++){
+            //     n += i
+            // }
+            // for(let s of n){
+            //     if(s == '1'){
+            //         count++
+            //     }
+            // }
+            // console.log(count)
+
+            //58. 숫자를 입력받고 천 단위로 콤마(,)를 찍어주세요.
+            //예를 들어, 123456789를 입력받았으면 123,456,789를 출력해야 합니다.
+
+            //     const n = prompt('숫자를 입력해주세요.');
+            //     parseInt(n, 10);
+
+            //     console.log(n.toLocaleString());
+
+            //     // 재귀함수 사용
+            //     function comma(s) {
+            //         if (s.length <= 3) {
+            //             return s;
+            //         } else {
+            //             return comma(s.slice(0, s.length - 3)) + ',' + s.slice(s.length - 3);
+            //         }
+            //     }
+
+            //    console.log(comma(n));
+
+            //59. 총 문자열의 길이는 50으로 제한하고 사용자가 문자열을 입력하면 그 문자열을
+            //가운데 정렬을 해주고, 나머지 빈 부분에는 '='을 채워 넣어주세요.
+
+            // 입력
+            // hi
+
+            // 출력
+            // ========================hi========================
+
+            // const 입력 = prompt('문자 입력해')
+
+            // const n = 25 + parseInt((입력.length/2), 10);
+
+            // const 답 = 입력.padStart(n,'=').padEnd(50,'=');
+            // console.log(답)
+
+            //60. 새 학기가 되어 이름을 가나다 순서대로 배정하고 번호를 매기려고 합니다.
+
+            // 데이터
+            // students = ['강은지','김유정','박현서','최성훈','홍유진','박지호','권윤일','김채리','한지호','김진이','김민호','강채연']
+
+            // 출력
+            // 번호: 1, 이름: 강은지
+            // 번호: 2, 이름: 강채연
+            // 번호: 3, 이름: 권윤일
+            // 번호: 4, 이름: 김민호
+            // 번호: 5, 이름: 김유정
+            // 번호: 6, 이름: 김진이
+            // 번호: 7, 이름: 김채리
+            // 번호: 8, 이름: 박지호
+            // 번호: 9, 이름: 박현서
+            // 번호: 10, 이름: 최성훈
+            // 번호: 11, 이름: 한지호
+            // 번호: 12, 이름: 홍유진
+
+            const students = ['강은지', '김유정', '박현서', '최성훈', '홍유진', '박지호', '권윤일', '김채리', '한지호', '김진이', '김민호', '강채연'];
+            const 정렬 = students.sort();
+            for (let i in 정렬) {
+                console.log(`번호: ${i}, 이름: ${정렬[i]}`);
+            }
+        </script>
+    </body>
+</html>
