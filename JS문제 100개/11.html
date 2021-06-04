@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // 51.
+            // 병합정렬(merge sort)은 대표적인 정렬 알고리즘 중 하나로 다음과 같이 동작합니다.
+            // 1. 리스트의 길이가 0 또는 1이면 이미 정렬된 것으로 본다. 그렇지 않은 경우에는
+            // 2. 정렬되지 않은 리스트를 절반으로 잘라 비슷한 크기의 두 부분 리스트로 나눈다.
+            // 3. 각 부분 리스트를 재귀적으로 합병 정렬을 이용해 정렬한다.
+            // 4. 두 부분 리스트를 다시 하나의 정렬된 리스트로 합병한다.
+            // function mergeSort(arr) {
+            //     if (arr.length <= 1) {
+            //         return arr;
+            //     }
+
+            //     const mid = Math.floor(arr.length / 2);
+            //     const left = arr.slice(0, mid);
+            //     const right = arr.slice(mid);
+
+            //     return merge(mergeSort(left), mergeSort(right));
+            // }
+
+            // function merge(left, right) {
+            //     let result = [];
+
+            //     while (left.length && right.length) {
+            //         if (left[0] < right[0]) {
+            //             result.push(left.shift());
+            //         } else {
+            //             result.push(right.shift());
+            //         }
+            //     }
+            //     //while 모두 돌리고 나머지 남은 left, right 둘 중 안의 값 처리
+            //     while (left.length) {
+            //         result.push(left.shift());
+            //     }
+            //     while (right.length) {
+            //         result.push(right.shift());
+            //     }
+
+            //     return result;
+            // }
+
+            // const array = prompt('배열을 입력하세요')
+            //     .split(' ')
+            //     .map((n) => parseInt(n, 10));
+
+            // console.log(mergeSort(array));
+
+            //52. quick sort 다음 빈 칸을 채워 퀵 정렬을 완성해주세요.
+            // function quickSort(arr){
+            //     if (arr.length <= 1){
+            //         return arr;
+            //     }
+
+            //     const pivot = arr[0];
+            //     const left = [];
+            //     const right = [];
+
+            //     for (let i=1; i<arr.length; i++){
+            //         if(arr[i] < pivot){
+            //         left.push(arr[i]);
+            //         } else {
+            //         right.push(arr[i]);
+            //         }
+            //     }
+            //     return quickSort(left).concat(pivot, quickSort(right));
+            //     }
+
+            //     const array = prompt('배열을 입력하세요').split(' ').map(n => parseInt(n, 10));
+
+            //     console.log(quickSort(array));
+
+            //53. 괄호 문자열이란 괄호 기호인 '{', '}', '[', ']', '(', ')' 와 같은 것을 말한다. 그중 괄호의 모양이 바르게
+            //구성된 문자열을 바른 문자열, 그렇지 않은 문자열을 바르지 않은 문자열이라 부르도록 하자.
+            // (())와 같은 문자열은 바른 문자열이지만 ()()) 와 같은 문자열은 바르지 않은 문자열이다.
+            // (해당 문제에서는 소괄호만 판별하지만,  중괄호와 대괄호까지 판별해 보세요.)
+
+            // 입력으로 주어진 괄호 문자열이 바른 문자열인지 바르지 않은 문자열인지
+            //"YES"와 "NO"로 구분된 문자열을 출력해보자.
+
+            // function mathBrackets(e) {
+            //     let count = 0;
+
+            //     //괄호 개수가 같지 않으면 false
+            //     for (let i = 0; i < e.length; i++) {
+            //         if (e[i] === '(') {
+            //             count++;
+            //         }
+            //         if (e[i] === ')') {
+            //             count--;
+            //         }
+            //     }
+            //     if (count !== 0) {
+            //         return false;
+            //     }
+
+            //     let 괄호 = [];
+            //     for (let i in e) {
+            //         if (e[i] === '(') {
+            //             괄호.push('(');
+            //         }
+
+            //         if (e[i] === ')') {
+            //             if (괄호.length === 0) {
+            //                 return false;
+            //             }
+            //             괄호.pop();
+            //         }
+            //     }
+            //     return true;
+            // }
+
+            // const n = prompt('입력해주세요.').split('');
+
+            // if (mathBrackets(n) === true) {
+            //     console.log('YES');
+            // } else {
+            //     console.log('NO');
+            // }
+
+            //54. 스탬프에 적힌 숫자가 공백으로 구분되어 주어지면 이 숫자가 연속수인지
+            //아닌지 "YES"와 "NO"로 판별하는 프로그램을 작성하시오
+
+            // 입력1
+            // 1 2 3 4 5
+
+            // 출력1
+            // YES
+
+            // 입력2
+            // 1 4 2 6 3
+
+            // 출력2
+            // NO
+
+            // function sol(l) {
+            //     //일단 sort메소드로 숫자 값 배열 l 정렬
+            //     l.sort((a, b) => {
+            //         return a - b;
+            //     });
+
+            //     for (let i = 0; i < l.length - 1; i++) {
+            //         if (l[i] + 1 !== l[i + 1]) {
+            //             return 'NO';
+            //         }
+            //     }
+            //     return 'YES';
+            // }
+
+            // const n = prompt('입력해주세요')
+            //     .split(' ')
+            //     .map((n) => parseInt(n, 10));
+
+            // console.log(sol(n));
+
+            //55. 하노이의 탑
+
+            // const route = [];
+
+            // function hanoi(num, start, end, temp) {
+            //     //원판이 한 개일 때에는 바로 옮기면 됩니다.
+            //     if (num === 1) {
+            //         route.push([start, end]);
+            //         return NaN;
+            //     }
+
+            //     //원반이 n-1개를 경유기둥으로 옮기고
+            //     hanoi(num - 1, start, temp, end);
+            //     //가장 큰 원반은 목표기둥으로
+            //     route.push([start, end]);
+            //     //경유기둥과 시작기둥을 바꿉니다.
+            //     hanoi(num - 1, temp, end, start);
+            // }
+
+            // hanoi(3, 'A', 'B', 'C');
+            // console.log(route);
+            // console.log(route.length);
+        </script>
+    </body>
+</html>
