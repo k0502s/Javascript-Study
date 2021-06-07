@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            //61. 문자열을 입력받고 연속되는 문자열을 압축해서 표현하고 싶습니다.
+            // 입력
+            // aaabbbbcdddd
+
+            // 출력
+            // a3b4c1d4
+            // const 문자입력 = prompt('문자 입력해').split('');
+            // let 스토어 = 문자입력[0];
+            // let 답 = '';
+            // let count = 0;
+
+            // for (let i of 문자입력) {
+            //     if (i == 스토어) {
+            //         count += 1;
+            //     } else {
+            //         답 += 스토어 + String(count);
+            //         스토어 = i;
+            //         count = 1;
+            //     }
+            // }
+            // //마지막 중복 문자는 else로 넘어가지 않으므로 for 문 밖에 따로 해줌
+            // 답 += 스토어 + String(count);
+            // console.log(답);
+
+            //62. 20190923을 출력합니다.
+            // 1. 코드 내에 숫자가 없어야 합니다.
+            //  - 예) console.log(20190923)이라고 하시면 안됩니다.
+            // 2. 파일 이름이나 경로를 사용해서는 안됩니다.
+            // 3. 시간, 날짜 함수를 사용해서는 안됩니다.
+            // 4. 에러 번호 출력을 이용해서는 안됩니다.
+            // 5. input을 이용해서는 안됩니다.
+            // const user_s = 'aacdddddddddfffffffffgghhh';
+            // let result_s = '';
+
+            // console.log(
+            //     `${user_s.match(/a/g).length}${Number(user_s.match(/b/g))}${user_s.match(/c/g).length}${user_s.match(/d/g).length}${Number(user_s.match(/e/g))}${user_s.match(/f/g).length}${
+            //         user_s.match(/g/g).length
+            //     }${user_s.match(/h/g).length}`
+            // );
+
+            //63. 어떤 입력이 주어지면 앞 글자만 줄여 출력하도록 해주세요.
+
+            // 입력
+            // 복잡한 세상 편하게 살자
+
+            // 출력
+            // 복세편살
+
+            // 방법1
+            // const 입력 = prompt('문장 입력해').split('');
+            // let 스토어 = 입력[0];
+            // let 답 = '';
+            // 답 += 스토어;
+            // for (let i in 입력) {
+            //     if (입력[i] == ' ') {
+            //         입력.splice(i, 1);
+            //         스토어 += 입력[i];
+            //     }
+            // }
+
+            // console.log(스토어);
+
+            //방법2
+            // const user_input = prompt('문자열을 입력하세요').split(' ');
+            // console.log(user_input);
+            // let result = '';
+
+            // for (let s of user_input) {
+            //     result += s.slice(0, 1);
+            // }
+
+            // console.log(result);
+
+            //64. 정량 N에 정확히 맞춰야만 움직이는 화물용 엘리베이터가 있습니다.
+            // 화물은 7kg, 3kg 두 가지이며 팔이 아픈 은후는 가장 적게 화물을 옮기고 싶습니다.
+
+            // 예를 들어 정량이 24kg이라면 3kg 8개를 옮기는 것보다는
+            // 7kg 3개, 3kg 1개 즉 4개로 더 적게 옮길 수 있습니다.
+
+            // 입력
+            // 정량 N이 입력됩니다.
+
+            // 출력
+            // 가장 적게 옮길 수 있는 횟수를 출력합니다.
+            // 만약 어떻게 해도 정량이 N이 되지 않는다면 -1을 출력합니다.
+
+            // const 정량 = prompt('정량 입력해');
+            // const N = parseInt(정량, 10);
+            // const 최소횟수 = (N) => {
+            //     몫 = Math.floor(N / 7);
+            //     나머지 = N % 7;
+            //     if (나머지 == 0) {
+            //         return 몫;
+            //     } else {
+            //         몫2 = Math.floor(나머지 / 3);
+            //         나머지2 = 나머지 % 3;
+            //     }
+            //     if (나머지2 != 0) {
+            //         return -1;
+            //     } else {
+            //         console.log(몫 + 몫2);
+            //     }
+            // };
+            // 최소횟수(N);
+
+            //65.
+            // a = [1, 2, 3, 4]
+            // b = [a, b, c, d]
+            // 이런 리스트가 있을 때 [[1, a], [b, 2], [3, c], [d, 4]] 이런 식으로
+            // a, b 리스트가 번갈아가면서 출력되게 해주세요.
+
+            // 방법 1 - forEach 사용
+            const a = [1, 2, 3, 4];
+            const b = ['a', 'b', 'c', 'd'];
+            let c = [];
+
+            a.forEach(function (e, i) {
+                if (i % 2 === 0) {
+                    c.push([e, b[i]]);
+                } else {
+                    c.push([b[i], e]);
+                }
+            });
+
+            console.log(c);
+
+            // 방법 2 - map 사용
+            const a = [1, 2, 3, 4];
+            const b = ['a', 'b', 'c', 'd'];
+
+            let c = a.map(function (e, i) {
+                if (i % 2 === 0) {
+                    return [e, b[i]];
+                } else {
+                    return [b[i], e];
+                }
+            });
+
+            console.log(c);
+        </script>
+    </body>
+</html>
