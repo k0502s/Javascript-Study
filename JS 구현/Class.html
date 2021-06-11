@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            //---------------------------------------------------//
+            class Person2 {
+                //class을 선언해준다.
+                constructor(name) {
+                    this.name = name;
+                } //생성자 함수의 내용으로 보면 된다.
+                getName() {
+                    return this.name;
+                } //prototype 메소드 대신 이렇게 쓰면 된다.
+                static isPerson(obj) {
+                    return obj instanceof this;
+                } // static 함수는 이렇게 쓰면 된다.
+            }
+            //중요한 것은 class 안은 객체처럼 묶음이 아니라 메소드들을 정의해놓을 수 있는 구역으로 이해해야한다.
+            const jin2 = new Person2('jinseok');
+            console.log(jin2.getName());
+            console.log(Person2.isPerson(jin2));
+            //결과:
+            //jinseok
+            //true
+            //---------------------------------------------------//
+            let A = class {};
+            A = 10; // ok
+
+            const B = class {};
+            B = 10; // 오류
+
+            class C {}
+            C = 10; // ok
+            //---------------------------------------------------//
+            const instanceGenerator = (className, ...params) => new className(...params);
+            class Person {
+                constructor(name) {
+                    this.name = name;
+                }
+                sayName() {
+                    console.log(this.name);
+                }
+            }
+
+            const jin = instanceGenerator(Person, 'jinseok');
+            const jin2 = instanceGenerator(
+                class {
+                    constructor(name) {
+                        this.name = name;
+                    }
+                    sayName() {
+                        console.log(this.name);
+                    } // 이처럼 값으로 매개변수로서 class을 사용할 수 있다.
+                },
+                '진석'
+            );
+
+            jin.sayName();
+            jin2.sayName();
+
+            //결과:
+            //jinseok
+            //진석
+            //---------------------------------------------------//
+            const method1 = 'sayName';
+            const fullNameGetter = 'fullname';
+            class Person {
+                constructor(name) {
+                    this.name = name;
+                }
+                [method1]() {
+                    console.log(this.name);
+                } // class 안에서도 대괄호 표기법이 가능하다.
+                get [fullNameGetter]() {
+                    return this.name + ' kim';
+                }
+            }
+            const jin = new Person('jinseok');
+            jin.sayName();
+            console.log(jin.fullname);
+
+            //결과:
+            //jinseok
+            //jinseok kim
+            //---------------------------------------------------//
+            class Person {
+                static create(name) {
+                    return new this(name);
+                }
+                constructor(name) {
+                    this.name = name;
+                }
+            }
+            const jn = Person.create('진석'); //Class 안의 정적 메소드는 무조건 정적 메소드를 품고 있는
+            //Class만이 접근 가능하다. 프로토타입, this 되지 않는다.
+            console.log(jn);
+
+            //결과:
+            //진석
+            //---------------------------------------------------//
+            class Square {
+                constructor(width) {
+                    this.width = width;
+                }
+                getArea() {
+                    return this.width * (this.height || this.width);
+                }
+            }
+            class Rectangle extends Square {
+                //class 명 뒤에 extends을 붙이고 상위에 있는 Square붙여준다.
+                constructor(width, height) {
+                    super(width); //super 함수를 쓰면 자동으로 extends 뒤에 붙여준 Square의
+                    // 'this.width = width'을 가르키게 된다.
+                    this.height = height; // this 또한 rect(Rectangle의 생성함수 변수).getArea()으로 호출하면
+                    //Square의 getArea() 메소드 자동으로 연결된다.
+                }
+            }
+
+            const rect = new Rectangle(3, 4);
+            console.log(rect.getArea());
+            console.log(rect instanceof Rectangle);
+            console.log(rect instanceof Square); // true가 나왔다는 의미는  Rectangle과 Square 연결되었다는 거다.
+
+            //결과:
+            //12
+            //true
+            //true
+            //---------------------------------------------------//
+            class Rectangle {
+                constructor(width, height) {
+                    this.width = width;
+                    this.height = height;
+                }
+                getArea() {
+                    return this.width * this.height;
+                }
+            }
+            class Square extends Rectangle {
+                constructor(width) {
+                    // console.log(super) // super는 접근 및 호출할 수 없다. 내부에서 쓰는 용도 밖에 없다.
+                    super(width, width); //서브 클래스에서 super을 먼저 쓰고나서 아래부터 this을 써야하는 규칙이 있다.
+                    //'이제 this 올 수 있음'
+                }
+                getArea() {
+                    console.log('get area of square.');
+                    //  console.dir(super) // super는 접근 및 호출할 수 없다. 내부에서 쓰는 용도 밖에 없다.
+                    return super.getArea();
+                    //서브 클래스 안의  getArea ()와 같은 메소드 내부에서는 메소드 오버라이드 또는
+                    //상위 메소드 호출 목적으로 활용한다.
+                }
+            }
+            const square = new Square(3);
+            console.log(square.getArea());
+
+            //결과:
+            //get area of square.
+            //9
+            //---------------------------------------------------//
+            //---------------------------------------------------//
+        </script>
+    </body>
+</html>

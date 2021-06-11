@@ -77,7 +77,7 @@
                 let result = arr.slice();
 
                 for (let i = 0; i < result.length - 1; i++) {
-                    for (let j = 0; j < result.length - i; j++) {
+                    for (let j in result) {
                         if (result[j] > result[j + 1]) {
                             //빈칸을 채워주세요.
                             let temp = result[j];

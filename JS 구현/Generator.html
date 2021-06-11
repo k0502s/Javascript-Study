@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            function* gene() {
+                yield;
+            }
+
+            const gene = function* () {
+                yield;
+            };
+
+            const obj = {
+                gene1: function* () {
+                    yield;
+                }, //메소드 함수 가능
+                *gene2() {
+                    yield;
+                }, //함수 축약형으로도 가능
+            };
+
+            class A {
+                *gene() {
+                    yield;
+                }
+            }
+            //---------------------------------------------------//
+            function* gene() {
+                console.log(1);
+                yield 1;
+                console.log(2);
+                yield 2;
+                console.log(3);
+            }
+            const gen = gene();
+            console.log(...gen);
+
+            // 1
+            // 2
+            // 3
+            //1 2 (yield 2에서 딱 멈춘다.)
+            //---------------------------------------------------//
+            function* gene1() {
+                yield [1, 10];
+                yield [2, 20];
+            }
+            function* gene2() {
+                yield [3, 20];
+                yield [4, 40];
+            }
+            function* gene3() {
+                yield* gene1();
+                yield* gene2();
+                yield* [
+                    [5, 56],
+                    [4, 40],
+                ];
+            }
+            const gen = gene3();
+            for (let [k, v] of gen) {
+                console.log(k, v);
+            }
+
+            //1 10
+            //2 20
+            //3 20
+            //4 40
+            //5 56
+            //4 40
+            //---------------------------------------------------//
+            function* gene() {
+                let first = yield 1;
+                let second = yield first + 2;
+                yield second + 3;
+            }
+            const gen = gene();
+            console.log(gen.next().value); // 1
+            console.log(gen.next(10).value); // 12 왜냐하면 next 메소드 인자로 값을 넣어주면 변수 first에
+            // 넘겨주는 특성을 가지고 있기 때문이다.
+            //---------------------------------------------------//
+            const fetchWrapper = (gen, url) =>
+                fetch(url)
+                    .then((res) => res.json())
+                    .then((res) => gen.next(res));
+
+            function* getNthUserInfo() {
+                const [gen, from, nth] = yield;
+                const req1 = yield fetchWrapper(gen, `https://api.github.com/users?since=${from || 0}`);
+                const userId = req1[nth - 1 || 0].id;
+                console.log(userId); // 1004
+                const req2 = yield fetchWrapper(gen, `https://api.github.com/user/${userId}`);
+                console.log(req2); // id 1004의 user 정보들...
+            }
+            const runGenerator = (generator, ...rest) => {
+                const gen = generator();
+                gen.next();
+                gen.next([gen, ...rest]);
+            };
+
+            runGenerator(getNthUserInfo, 1000, 4);
+            //---------------------------------------------------//
+        </script>
+    </body>
+</html>
